@@ -1,1 +1,27 @@
-POST http://localhost:3000/japonesa
+POST http://localhost:3000/carro
+Content-type: application/json
+
+{
+    "title": "Marcos",
+    "valor": "15000",
+    "descricao": "Um carro clássico e popular no Brasil"
+}
+
+###
+
+GET http://localhost:3000/carro?search=Marcos
+
+###
+
+PUT http://localhost:3000/carro/f71e26af-9701-468d-a41a-abf0b23e4262
+Content-type: application/json
+
+{
+    "title": "Fusca",
+    "valor": "30000",
+    "descricao": "Um carro clássico e popular no Brasil e antigo."
+}
+
+###
+
+DELETE http://localhost:3000/carro/f71e26af-9701-468d-a41a-abf0b23e4262

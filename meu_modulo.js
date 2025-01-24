@@ -1,22 +1,37 @@
 import { randomUUID } from "node:crypto";
 
 export class DataBaseMemory {
-    #comida = new Map();
+    #carro = new Map();
 
-    list() {
-        return this.#comida.values();
+    list(search) {
+        return Array.from(this.#carro.entries()).map((carroArray) => {
+            const id = carroArray[0];
+            const data = carroArray[1];
+
+            return {
+                id,
+                ...data,
+            }
+        }).filter(carro => {
+            if (search) {
+                return carro.title.includes(search)
+            }
+            return true;
+        })
+
     }
 
-    create(comida) {
-        const comidaId = randomUUID();
-        this.#comida.set(comidaId, comida);
+
+    create(carro) {
+        const carroId = randomUUID();
+        this.#carro.set(carroId, carro);
     }
 
-    update(id, comida) {
-        this.#comida.set(id, comida)
+    update(id, carro) {
+        this.#carro.set(id, carro)
     }
 
     delete(id) {
-        this.#comida.delete(id);
+        this.#carro.delete(id);
     }
 }
